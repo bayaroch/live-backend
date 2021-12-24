@@ -3,16 +3,15 @@
   "host": "localhost",
   "port": 3306,
   "username": "root",
-  "password": "",
+  "password": "root",
   "database": "live",
   "autoLoadEntities": true,
   "synchronize": true,
   "logging": false,
   "entities": ["dist/**/*.entity.js"],
-  "migrations": ["dist/migrations/**/*.js"],
+  "migrations": ["dist/database/migrations/**/*.js"],
   "subscribers": ["dist/subscribers/**/*.js"],
   "cli": {
-    "migrationsDir": "src/migrations",
-    "subscribersDir": "src/subscribers"
+    "migrationsDir": "src/migrations"
   }
 }

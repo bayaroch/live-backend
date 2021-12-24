@@ -1,10 +1,10 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UsersService } from '../users/users.service';
-import { IUsers } from '../users/interfaces/users.interface';
 import * as bcrypt from 'bcrypt';
 import { JwtPayload } from './interfaces/jwt.payload';
 import { LoginDto } from './dto/login.dto';
+import { UsersService } from 'src/modules/users/users.service';
+import { IUsers } from 'src/modules/users/interfaces/users.interface';
 
 @Injectable()
 export class LoginService {
@@ -20,7 +20,7 @@ export class LoginService {
   public async login(
     loginDto: LoginDto,
   ): Promise<any | { status: number; message: string }> {
-    return this.validate(loginDto).then(userData => {
+    return this.validate(loginDto).then((userData) => {
       if (!userData) {
         throw new UnauthorizedException();
       }

@@ -6,7 +6,7 @@ import {
   Res,
   HttpStatus,
 } from '@nestjs/common';
-import { ChangePasswordService } from '../change-password/change-password.service';
+import { ChangePasswordService } from './change-password.service';
 import { AuthGuard } from '@nestjs/passport';
 import { ChangePasswordDto } from './dto/change-password.dto';
 

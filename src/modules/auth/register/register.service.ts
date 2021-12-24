@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcrypt';
 import { MailerService } from '@nestjs-modules/mailer';
 import { RegisterUserDto } from './dto/register-user.dto';
-import { IUsers } from './../users/interfaces/users.interface';
+import { UsersService } from 'src/modules/users/users.service';
+import { IUsers } from 'src/modules/users/interfaces/users.interface';
 
 @Injectable()
 export class RegisterService {

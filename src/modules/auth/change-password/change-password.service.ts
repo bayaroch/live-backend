@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { MailerService } from '@nestjs-modules/mailer';
+import { UsersService } from 'src/modules/users/users.service';
 
 @Injectable()
 export class ChangePasswordService {
@@ -13,7 +13,8 @@ export class ChangePasswordService {
   public async changePassword(
     changePasswordDto: ChangePasswordDto,
   ): Promise<any> {
-    this.sendMailChangePassword(changePasswordDto);
+    //TODO
+    // this.sendMailChangePassword(changePasswordDto);
 
     return await this.usersService.updateByPassword(
       changePasswordDto.email,
@@ -37,11 +38,11 @@ export class ChangePasswordService {
           nameUser: user.name,
         },
       })
-      .then(response => {
+      .then((response) => {
         console.log(response);
         console.log('Change Password: Send Mail successfully!');
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         console.log('Change Password: Send Mail Failed!');
       });
