@@ -12,6 +12,6 @@
   "migrations": ["dist/database/migrations/**/*.js"],
   "subscribers": ["dist/subscribers/**/*.js"],
   "cli": {
-    "migrationsDir": "src/migrations"
+    "migrationsDir": "src/database/migrations"
   }
 }
