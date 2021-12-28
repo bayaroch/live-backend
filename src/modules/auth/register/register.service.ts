@@ -1,9 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+} from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { MailerService } from '@nestjs-modules/mailer';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { UsersService } from 'src/modules/users/users.service';
-import { IUsers } from 'src/modules/users/interfaces/users.interface';
 
 @Injectable()
 export class RegisterService {
@@ -12,12 +14,16 @@ export class RegisterService {
     private readonly mailerService: MailerService,
   ) {}
 
-  public async register(registerUserDto: RegisterUserDto): Promise<IUsers> {
+  async register(registerUserDto: RegisterUserDto) {
     registerUserDto.password = bcrypt.hashSync(registerUserDto.password, 8);
 
     // this.sendMailRegisterUser(registerUserDto);
-
-    return this.usersService.create(registerUserDto);
+    const user = await this.usersService
+      .create(registerUserDto)
+      .catch((err) => {
+        throw new BadRequestException(err.message);
+      });
+    return user;
   }
 
   // private sendMailRegisterUser(user): void {

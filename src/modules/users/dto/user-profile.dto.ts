@@ -6,11 +6,6 @@ export class UserProfileDto {
   @IsNotEmpty()
   name: string;
 
-  @IsString()
-  @MaxLength(40)
-  @IsNotEmpty()
-  username: string;
-
   @IsEmail()
   @IsNotEmpty()
   email: string;

@@ -15,14 +15,16 @@ export class UserTicketMigration1640596821905 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'user_id',
-            type: 'int',
+            type: 'varchar',
           },
           {
             name: 'event_id',
-            type: 'int',
+            type: 'varchar',
           },
         ],
       }),

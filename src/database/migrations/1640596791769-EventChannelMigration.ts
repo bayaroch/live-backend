@@ -15,10 +15,12 @@ export class EventChannelMigration1640596791769 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'event_id',
-            type: 'int',
+            type: 'varchar',
           },
           {
             name: 'channel_id',

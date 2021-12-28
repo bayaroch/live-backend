@@ -85,10 +85,9 @@ export class UsersService {
     userProfileDto: UserProfileDto,
   ): Promise<Users> {
     try {
-      const user = await this.userRepository.findOne({ id: +id });
+      const user = await this.userRepository.findOne({ id: id });
       user.name = userProfileDto.name;
       user.email = userProfileDto.email;
-      user.username = userProfileDto.username;
 
       return await this.userRepository.save(user);
     } catch (err) {

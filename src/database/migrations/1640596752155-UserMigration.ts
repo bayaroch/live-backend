@@ -8,8 +8,9 @@ export class UserMigration1640596752155 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'int',
+            type: 'varchar',
             isPrimary: true,
+            isGenerated: true,
           },
           {
             name: 'name',
@@ -18,6 +19,7 @@ export class UserMigration1640596752155 implements MigrationInterface {
           {
             name: 'email',
             type: 'varchar',
+            isUnique: true,
           },
           {
             name: 'password',
@@ -30,10 +32,12 @@ export class UserMigration1640596752155 implements MigrationInterface {
           {
             name: 'balance',
             type: 'float',
+            default: 0,
           },
           {
             name: 'type',
             type: 'int',
+            default: 1,
           },
         ],
       }),

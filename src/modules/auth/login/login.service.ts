@@ -5,6 +5,8 @@ import { JwtPayload } from './interfaces/jwt.payload';
 import { LoginDto } from './dto/login.dto';
 import { UsersService } from 'src/modules/users/users.service';
 import { IUsers } from 'src/modules/users/interfaces/users.interface';
+import { plainToClass } from 'class-transformer';
+import { Users } from 'src/modules/users/entities/users.entity';
 
 @Injectable()
 export class LoginService {
@@ -20,7 +22,7 @@ export class LoginService {
   public async login(
     loginDto: LoginDto,
   ): Promise<any | { status: number; message: string }> {
-    return this.validate(loginDto).then((userData) => {
+    return await this.validate(loginDto).then((userData) => {
       if (!userData) {
         throw new UnauthorizedException();
       }
@@ -46,10 +48,11 @@ export class LoginService {
       const accessToken = this.jwtService.sign(payload);
 
       return {
-        expiresIn: 3600,
-        accessToken: accessToken,
-        user: payload,
-        status: 200,
+        user: plainToClass(Users, userData),
+        metadata: {
+          accessToken: accessToken,
+          expiresIn: 3600,
+        },
       };
     });
   }

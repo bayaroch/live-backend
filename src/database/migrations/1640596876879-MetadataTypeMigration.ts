@@ -10,6 +10,8 @@ export class MetadataTypeMigration1640596876879 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'name',

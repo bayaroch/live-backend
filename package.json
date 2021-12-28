@@ -33,7 +33,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "handlebars": "^4.7.6",
-    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "nodemailer": "^6.4.11",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
@@ -41,7 +41,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "typeorm": "0.2.41"
+    "typeorm": "^0.3.0-alpha.24"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",

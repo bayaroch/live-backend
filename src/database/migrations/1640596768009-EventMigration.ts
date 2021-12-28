@@ -8,8 +8,9 @@ export class EventMigration1640596768009 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'int',
+            type: 'varchar',
             isPrimary: true,
+            isGenerated: true,
           },
           {
             name: 'title',

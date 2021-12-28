@@ -8,6 +8,7 @@ export class LoginController {
 
   @Post()
   public async login(@Body() loginDto: LoginDto): Promise<any> {
-    return await this.loginService.login(loginDto);
+    const res = await this.loginService.login(loginDto);
+    return res;
   }
 }

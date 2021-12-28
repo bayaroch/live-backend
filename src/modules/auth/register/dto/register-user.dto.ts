@@ -5,14 +5,13 @@ export class RegisterUserDto {
 
   @IsString()
   @MaxLength(30)
-  readonly name: string;
-
-  @IsString()
-  @MaxLength(40)
-  readonly username: string;
+  name: string;
 
   @IsEmail()
   readonly email: string;
+
+  @IsString()
+  phone_number: string;
 
   @IsNotEmpty()
   @IsString()

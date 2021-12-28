@@ -15,10 +15,12 @@ export class EventMetadataMigration1640596898047 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'event_id',
-            type: 'int',
+            type: 'varchar',
           },
           {
             name: 'metadata_type_id',

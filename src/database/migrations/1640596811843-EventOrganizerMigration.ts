@@ -17,14 +17,16 @@ export class EventOrganizerMigration1640596811843
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'event_id',
-            type: 'int',
+            type: 'varchar',
           },
           {
             name: 'user_id',
-            type: 'int',
+            type: 'varchar',
           },
         ],
       }),
