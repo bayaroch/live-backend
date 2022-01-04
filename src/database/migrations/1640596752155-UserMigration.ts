@@ -15,6 +15,7 @@ export class UserMigration1640596752155 implements MigrationInterface {
           {
             name: 'name',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'email',
@@ -28,6 +29,7 @@ export class UserMigration1640596752155 implements MigrationInterface {
           {
             name: 'phone_number',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'balance',
@@ -38,6 +40,15 @@ export class UserMigration1640596752155 implements MigrationInterface {
             name: 'type',
             type: 'int',
             default: 1,
+          },
+          {
+            name: 'isConfirmed',
+            type: 'tinyint',
+            default: 0,
+          },
+          {
+            name: 'confirmToken',
+            type: 'varchar',
           },
         ],
       }),
