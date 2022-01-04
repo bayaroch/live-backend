@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  UnauthorizedException,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { JwtPayload } from './interfaces/jwt.payload';
@@ -25,6 +29,9 @@ export class LoginService {
     return await this.validate(loginDto).then((userData) => {
       if (!userData) {
         throw new UnauthorizedException();
+      }
+      if (!userData.isConfirmed) {
+        throw new UnprocessableEntityException('Email not confirmed');
       }
 
       const passwordIsValid = bcrypt.compareSync(
