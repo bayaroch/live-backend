@@ -15,4 +15,7 @@ export class UserDto {
   @IsString()
   @MaxLength(60)
   password: string;
+
+  @IsString()
+  confirmToken: string;
 }

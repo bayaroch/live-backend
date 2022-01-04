@@ -10,6 +10,7 @@ import { ForgotPasswordModule } from './modules/auth/forgot-password/forgot-pass
 import { ChangePasswordModule } from './modules/auth/change-password/change-password.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -34,7 +35,7 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
           from: '"nest-modules" <modules@nestjs.com>',
         },
         template: {
-          dir: process.cwd() + './src/mails/templates/emails',
+          dir: join(__dirname, 'mails/templates/emails'),
           adapter: new HandlebarsAdapter(), // or new PugAdapter() or new EjsAdapter()
           options: {
             strict: true,

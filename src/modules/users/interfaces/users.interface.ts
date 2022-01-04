@@ -6,4 +6,6 @@ export interface IUsers {
   readonly phone_number: string;
   readonly type: number;
   readonly balance: number;
+  readonly isConfirmed: boolean;
+  readonly confirmToken: string;
 }
