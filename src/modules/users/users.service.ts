@@ -3,6 +3,7 @@ import {
   NotFoundException,
   HttpException,
   HttpStatus,
+  BadRequestException,
 } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -86,10 +87,11 @@ export class UsersService {
   ): Promise<Users> {
     try {
       const user = await this.userRepository.findOne({ id: id });
-      user.name = userProfileDto.name;
-      user.email = userProfileDto.email;
+      if (!user) {
+        throw new BadRequestException('User not found');
+      }
 
-      return await this.userRepository.save(user);
+      return await this.userRepository.save(userProfileDto);
     } catch (err) {
       throw new HttpException(err, HttpStatus.BAD_REQUEST);
     }

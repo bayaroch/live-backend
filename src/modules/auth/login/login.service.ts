@@ -51,7 +51,6 @@ export class LoginService {
         user: plainToClass(Users, userData),
         metadata: {
           accessToken: accessToken,
-          expiresIn: 3600,
         },
       };
     });
@@ -75,7 +74,6 @@ export class LoginService {
     const jwt = this.jwtService.sign(data);
 
     return {
-      expiresIn: 3600,
       token: jwt,
     };
   }

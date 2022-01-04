@@ -1,4 +1,4 @@
-import { MaxLength, IsNotEmpty, IsEmail, IsString } from 'class-validator';
+import { MaxLength, IsNotEmpty, IsString, IsBoolean } from 'class-validator';
 
 export class UserProfileDto {
   @IsString()
@@ -6,7 +6,11 @@ export class UserProfileDto {
   @IsNotEmpty()
   name: string;
 
-  @IsEmail()
+  @IsString()
   @IsNotEmpty()
-  email: string;
+  phone_number: string;
+
+  @IsBoolean()
+  @IsNotEmpty()
+  isConfirmed: boolean;
 }

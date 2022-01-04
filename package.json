@@ -4,6 +4,9 @@
   "description": "An API Boilerplate to create a ready-to-use REST API in seconds with NestJS 8.x and Passport Auth JWT System",
   "author": "Tony133",
   "license": "MIT",
+  "engines": {
+    "node": "16.13.0"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -17,7 +20,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "heroku-postbuild": "yarn install --only=dev --no-shrinkwrap && yarn build"
   },
   "dependencies": {
     "@nestjs-modules/mailer": "^1.6.0",

@@ -6,7 +6,7 @@ export class Users {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ nullable: true })
   name: string;
 
   @Column({ unique: true })
@@ -16,7 +16,7 @@ export class Users {
   @Exclude()
   password: string;
 
-  @Column()
+  @Column({ nullable: true })
   phone_number: string;
 
   @Column({ default: 0 })
@@ -26,4 +26,12 @@ export class Users {
   @Column({ default: 1 })
   @Exclude()
   type: number;
+
+  @Column({ default: false })
+  @Exclude()
+  isConfirmed: boolean;
+
+  @Column()
+  @Exclude()
+  confirmToken: string;
 }
