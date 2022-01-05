@@ -27,14 +27,14 @@ export class Event {
   timezone: number;
 
   @Column()
-  event_start: Date;
+  event_start: string;
 
   @Column()
-  event_end: Date;
+  event_end: string;
 
   @Column()
-  sale_start: Date;
+  sale_start: string;
 
   @Column()
-  sale_end: Date;
+  sale_end: string;
 }
