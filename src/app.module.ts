@@ -3,24 +3,20 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LoginModule } from './modules/auth/login/login.module';
-import { RegisterModule } from './modules/auth/register/register.module';
 import { UsersModule } from './modules/users/users.module';
 import { ForgotPasswordModule } from './modules/auth/forgot-password/forgot-password.module';
-import { ChangePasswordModule } from './modules/auth/change-password/change-password.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { join } from 'path';
+import { EventsModule } from './modules/events/events.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(),
-    LoginModule,
-    RegisterModule,
     UsersModule,
     ForgotPasswordModule,
-    ChangePasswordModule,
     MailerModule.forRootAsync({
       useFactory: () => ({
         transport: {
@@ -43,6 +39,8 @@ import { join } from 'path';
         },
       }),
     }),
+    EventsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
