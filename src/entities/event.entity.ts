@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity('event')
 export class Event {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
   @Column()
@@ -37,4 +37,7 @@ export class Event {
 
   @Column()
   sale_end: string;
+
+  @Column('boolean', { default: false })
+  is_deleted: boolean;
 }

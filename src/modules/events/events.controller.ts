@@ -12,6 +12,8 @@ import { EventsService } from './events.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 import { MyAuthGuard } from '../auth/auth.guard';
+import { CurrentUser } from '../users/user.decorator';
+import { UserEntity } from '../users/entities/user.entity';
 
 @Controller('events')
 export class EventsController {
@@ -19,8 +21,11 @@ export class EventsController {
 
   @Post()
   @UseGuards(MyAuthGuard)
-  async create(@Body() createEventDto: CreateEventDto) {
-    const event = await this.eventsService.create(createEventDto);
+  async create(
+    @Body() createEventDto: CreateEventDto,
+    @CurrentUser() user: UserEntity,
+  ) {
+    const event = await this.eventsService.create(createEventDto, user);
     return event;
   }
 
@@ -35,11 +40,13 @@ export class EventsController {
   }
 
   @Patch(':id')
+  @UseGuards(MyAuthGuard)
   update(@Param('id') id: string, @Body() updateEventDto: UpdateEventDto) {
     return this.eventsService.update(+id, updateEventDto);
   }
 
   @Delete(':id')
+  @UseGuards(MyAuthGuard)
   remove(@Param('id') id: string) {
     return this.eventsService.remove(+id);
   }
