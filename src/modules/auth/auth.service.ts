@@ -108,6 +108,9 @@ export class AuthService {
       if (!user) {
         throw new UnauthorizedException('User not Found');
       }
+      if (user.isConfirmed) {
+        throw new UnprocessableEntityException('Already accepted');
+      }
       this.usersService.updateProfileUser(user.id, {
         ...user,
         isConfirmed: true,

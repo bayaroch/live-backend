@@ -1,3 +1,5 @@
+import { Exclude } from 'class-transformer';
+
 export class EventEntity {
   id: number;
   title: string;
@@ -11,4 +13,9 @@ export class EventEntity {
   event_end: string;
   sale_start: string;
   sale_end: string;
+
+  organizers: any;
+
+  @Exclude()
+  is_deleted: string;
 }

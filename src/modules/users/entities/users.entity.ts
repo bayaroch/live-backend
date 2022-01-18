@@ -1,5 +1,6 @@
 import { Exclude } from 'class-transformer';
-import { Entity, PrimaryGeneratedColumn, Column, Unique } from 'typeorm';
+import { Event } from 'src/entities/event.entity';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
 
 @Entity('users')
 export class Users {
@@ -34,4 +35,7 @@ export class Users {
   @Column()
   @Exclude()
   confirmToken: string;
+
+  @ManyToMany(() => Event, (event) => event.organizers)
+  events: Event[];
 }

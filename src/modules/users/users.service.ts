@@ -12,6 +12,8 @@ import { IUsers } from './interfaces/users.interface';
 import { UserDto } from './dto/user.dto';
 import * as bcrypt from 'bcrypt';
 import { UserProfileDto } from './dto/user-profile.dto';
+import { plainToInstance } from 'class-transformer';
+import { UserEntity } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
@@ -95,5 +97,10 @@ export class UsersService {
     } catch (err) {
       throw new HttpException(err, HttpStatus.BAD_REQUEST);
     }
+  }
+
+  async getUserList() {
+    const users = await this.userRepository.find();
+    return plainToInstance(UserEntity, users);
   }
 }
