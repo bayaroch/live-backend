@@ -21,7 +21,12 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "heroku-postbuild": "yarn install --only=dev --no-shrinkwrap && yarn build"
+    "heroku-postbuild": "yarn install --only=dev --no-shrinkwrap && yarn build",
+    "entity:create": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm entity:create -n",
+    "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -n",
+    "migration:run": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run",
+    "migration:revert": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:revert",
+    "schema:drop": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm schema:drop"
   },
   "dependencies": {
     "@nestjs-modules/mailer": "^1.6.0",

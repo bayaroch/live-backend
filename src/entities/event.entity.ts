@@ -1,9 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Users } from 'src/modules/users/entities/users.entity';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
 
 @Entity('event')
 export class Event {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column()
   title: string;
@@ -40,4 +47,16 @@ export class Event {
 
   @Column('boolean', { default: false })
   is_deleted: boolean;
+
+  @ManyToMany(() => Users, (user) => user.events, { cascade: true })
+  @JoinTable({
+    name: 'event_organizers',
+    joinColumn: { name: 'event_id', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'user_id', referencedColumnName: 'id' },
+  })
+  organizers: Users[];
+
+  constructor(partial: Partial<Event>) {
+    Object.assign(this, partial);
+  }
 }
