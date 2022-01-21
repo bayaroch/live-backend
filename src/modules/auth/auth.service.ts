@@ -44,10 +44,7 @@ export class AuthService {
       );
 
       if (!passwordIsValid == true) {
-        return {
-          message: 'Authentication failed. Wrong password',
-          status: 400,
-        };
+        throw new UnauthorizedException('Wrong password')
       }
 
       const payload = {
