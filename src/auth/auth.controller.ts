@@ -8,7 +8,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
-import { Users } from '../users/entities/users.entity';
+import { Users } from '../shared/users/entities/users.entity';
 import { AuthService } from './auth.service';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { LoginDto } from './dto/login.dto';

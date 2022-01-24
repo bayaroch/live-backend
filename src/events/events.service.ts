@@ -8,7 +8,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass, plainToInstance } from 'class-transformer';
 import { Event } from 'src/entities/event.entity';
 import { Connection, Repository } from 'typeorm';
-import { Users } from '../users/entities/users.entity';
+import { Users } from '../shared/users/entities/users.entity';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 
