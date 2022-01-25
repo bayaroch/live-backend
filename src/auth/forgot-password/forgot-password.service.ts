@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { MailerService } from '@nestjs-modules/mailer';
 import * as bcrypt from 'bcrypt';
-import { Users } from 'src/modules/users/entities/users.entity';
+import { Users } from 'src/shared/users/entities/users.entity';
 
 @Injectable()
 export class ForgotPasswordService {

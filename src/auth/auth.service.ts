@@ -7,11 +7,11 @@ import {
 import * as bcrypt from 'bcrypt';
 import { MailerService } from '@nestjs-modules/mailer';
 import { RegisterUserDto } from './dto/register-user.dto';
-import { UsersService } from 'src/modules/users/users.service';
-import { Users } from 'src/modules/users/entities/users.entity';
+import { UsersService } from 'src/shared/users/users.service';
+import { Users } from 'src/shared/users/entities/users.entity';
 import { JwtService } from '@nestjs/jwt';
 import { LoginDto } from './dto/login.dto';
-import { IUsers } from 'src/modules/users/interfaces/users.interface';
+import { IUsers } from 'src/shared/users/interfaces/users.interface';
 import { plainToClass } from 'class-transformer';
 import { ChangePasswordDto } from './dto/change-password.dto';
 

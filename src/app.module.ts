@@ -3,18 +3,30 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './modules/users/users.module';
-import { ForgotPasswordModule } from './modules/auth/forgot-password/forgot-password.module';
+import { UsersModule } from './shared/users/users.module';
+import { ForgotPasswordModule } from './auth/forgot-password/forgot-password.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { join } from 'path';
-import { EventsModule } from './modules/events/events.module';
-import { AuthModule } from './modules/auth/auth.module';
+import { EventsModule } from './events/events.module';
+import { AuthModule } from './auth/auth.module';
+import { AwsSdkModule } from 'nest-aws-sdk';
+import { IVS } from 'aws-sdk';
+import { AwsModule } from './shared/aws/aws.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(),
+    AwsSdkModule.forRootAsync({
+      defaultServiceOptions: {
+        useValue: {
+          region: 'eu-west-1',
+        },
+      },
+      services: [IVS],
+    }),
+    AwsModule,
     UsersModule,
     ForgotPasswordModule,
     MailerModule.forRootAsync({

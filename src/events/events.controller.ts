@@ -12,16 +12,21 @@ import {
 import { EventsService } from './events.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
-import { MyAuthGuard } from '../auth/auth.guard';
-import { CurrentUser } from '../users/user.decorator';
-import { UserEntity } from '../users/entities/user.entity';
+import { MyAuthGuard } from '../common/guards/auth.guard';
+import { CurrentUser } from '../common/decorators/user.decorator';
+import { UserEntity } from '../shared/users/entities/user.entity';
 import { plainToClass, plainToInstance } from 'class-transformer';
 import { EventEntity } from './entities/event.entity';
-import { Users } from '../users/entities/users.entity';
+import { Users } from '../shared/users/entities/users.entity';
 
 @Controller('events')
 export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
+
+  @Get('/activeChannels')
+  activeChannels() {
+    return 'Hello world';
+  }
 
   @Post()
   @UseGuards(MyAuthGuard)

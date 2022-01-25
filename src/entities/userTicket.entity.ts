@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Users } from 'src/modules/users/entities/users.entity';
+import { Users } from 'src/shared/users/entities/users.entity';
 import { Event } from './event.entity';
 
 @Entity('user_ticket')
