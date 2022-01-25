@@ -25,7 +25,7 @@ export class EventsController {
 
   @Get('/activeChannels')
   activeChannels() {
-    return 'Hello world';
+    return [{ test: 'Hello world' }, { test: 'Hello world 2' }];
   }
 
   @Post()
