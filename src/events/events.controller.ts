@@ -23,6 +23,11 @@ import { Users } from '../shared/users/entities/users.entity';
 export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
 
+  @Get('/activeChannels')
+  activeChannels() {
+    return 'Hello world';
+  }
+
   @Post()
   @UseGuards(MyAuthGuard)
   async create(
@@ -34,11 +39,6 @@ export class EventsController {
       ...event,
       organizers: plainToInstance(UserEntity, event.organizers),
     });
-  }
-
-  @Get('activeChannels')
-  activeChannels() {
-    return 'Hello world';
   }
 
   @Get()
