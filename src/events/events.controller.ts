@@ -36,6 +36,11 @@ export class EventsController {
     });
   }
 
+  @Get('activeChannels')
+  activeChannels() {
+    return 'Hello world';
+  }
+
   @Get()
   findAll(@Query('limit') limit: string, @Query('page') page: string) {
     const events = this.eventsService.findAll({ limit, page });

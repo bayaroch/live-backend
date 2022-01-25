@@ -7,6 +7,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass, plainToInstance } from 'class-transformer';
 import { Event } from 'src/entities/event.entity';
+import { AwsManagerService } from 'src/shared/aws/aws.service';
 import { Connection, Repository } from 'typeorm';
 import { Users } from '../shared/users/entities/users.entity';
 import { CreateEventDto } from './dto/create-event.dto';
@@ -18,6 +19,7 @@ export class EventsService {
     @InjectRepository(Event)
     private readonly eventRepository: Repository<Event>,
     private readonly connection: Connection,
+    private readonly awsService: AwsManagerService,
   ) {}
   async create(body: CreateEventDto, user: Users) {
     const event = this.eventRepository.create(body);

@@ -10,11 +10,23 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
 import { join } from 'path';
 import { EventsModule } from './events/events.module';
 import { AuthModule } from './auth/auth.module';
+import { AwsSdkModule } from 'nest-aws-sdk';
+import { IVS } from 'aws-sdk';
+import { AwsModule } from './shared/aws/aws.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(),
+    AwsSdkModule.forRootAsync({
+      defaultServiceOptions: {
+        useValue: {
+          region: 'eu-west-1',
+        },
+      },
+      services: [IVS],
+    }),
+    AwsModule,
     UsersModule,
     ForgotPasswordModule,
     MailerModule.forRootAsync({
