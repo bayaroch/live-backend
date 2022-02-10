@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
+import { Event } from './event.entity';
 
 @Entity('channel')
 export class Channel {
@@ -12,20 +19,30 @@ export class Channel {
   arn: string;
 
   @Column()
-  authorized: number;
+  authorized: boolean;
 
   @Column()
-  ingestEndpoint: number;
+  ingestEndpoint: string;
 
   @Column()
-  latencyMode: string;
+  latencyMode: 'NORMAL' | 'LOW' | string;
 
   @Column()
-  playbackUrl: number;
+  playbackUrl: string;
 
   @Column()
-  recordingConfigurationArn: number;
+  recordingConfigurationArn: string;
 
   @Column()
-  type: Date;
+  type: 'BASIC' | 'STANDARD' | string;
+
+  @Column()
+  value: string;
+
+  @Column()
+  channelArn: string;
+
+  @OneToOne(() => Event)
+  @JoinColumn()
+  event: Event;
 }

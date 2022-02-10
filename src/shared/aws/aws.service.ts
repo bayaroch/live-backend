@@ -14,4 +14,9 @@ export class AwsManagerService {
     const response = await this.ivs.deleteChannel(param).promise();
     return response;
   }
+
+  async listChannel() {
+    const response = await this.ivs.listChannels().promise();
+    return response;
+  }
 }
