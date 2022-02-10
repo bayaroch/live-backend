@@ -13,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
 import { AwsSdkModule } from 'nest-aws-sdk';
 import { IVS } from 'aws-sdk';
 import { AwsModule } from './shared/aws/aws.module';
+import { ChannelModule } from './channel/channel.module';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { AwsModule } from './shared/aws/aws.module';
     }),
     EventsModule,
     AuthModule,
+    ChannelModule,
   ],
   controllers: [AppController],
   providers: [AppService],

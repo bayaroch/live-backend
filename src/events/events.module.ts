@@ -10,5 +10,6 @@ import { AwsModule } from 'src/shared/aws/aws.module';
   imports: [TypeOrmModule.forFeature([Event]), AuthModule, AwsModule],
   controllers: [EventsController],
   providers: [EventsService],
+  exports: [EventsService, AuthModule],
 })
 export class EventsModule {}
